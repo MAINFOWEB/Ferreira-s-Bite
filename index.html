@@ -165,6 +165,12 @@
             transition: 0.4s;
         }
 
+        .cta-btn:hover {
+            background: var(--neon-pink);
+            color: #0b090a;
+            box-shadow: 0 0 25px var(--neon-pink);
+        }
+
         /* Section Global */
         section {
             padding: 60px 20px;
@@ -195,8 +201,8 @@
         /* Menu / Cardápio */
         .menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .menu-category {
@@ -206,7 +212,7 @@
         }
 
         .category-title {
-            font-size: 26px;
+            font-size: 24px;
             text-transform: uppercase;
             color: var(--neon-red);
             border-bottom: 2px dashed rgba(255, 0, 85, 0.4);
@@ -217,7 +223,7 @@
             text-align: center;
         }
 
-        /* Card Ajustado - Foco total na Imagem Grande */
+        /* CARDS MENORES E COMPACTOS - Conforme solicitado */
         .menu-item {
             display: flex;
             flex-direction: column;
@@ -226,8 +232,8 @@
             border: 1px solid rgba(0, 240, 255, 0.15);
             border-radius: 12px;
             padding: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             backdrop-filter: blur(5px);
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
@@ -236,18 +242,19 @@
         .menu-item:hover {
             transform: translateY(-3px);
             border-color: var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
         }
 
-        /* TAMANHO IGUAL IMAGEM 1: Imagem grande e preenchendo as bordas laterais do card */
+        /* Imagem menor e controlada proporcionalmente ao tamanho do card */
         .thumb-img {
             width: 100%;
-            height: 210px;
+            max-width: 200px;
+            height: 130px;
             object-fit: cover;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background-color: #1a1a1a;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .item-content {
@@ -255,27 +262,26 @@
         }
 
         .item-content h4 {
-            font-size: 19px;
+            font-size: 17px;
             text-transform: uppercase;
             color: #fff;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
+            margin-bottom: 4px;
         }
 
         .item-price {
             font-weight: bold;
             color: var(--neon-blue);
             text-shadow: 0 0 5px rgba(0, 240, 255, 0.4);
-            font-size: 17px;
-            margin-bottom: 15px;
+            font-size: 15px;
+            margin-bottom: 12px;
         }
 
-        /* Controles Horizontais Lado a Lado */
+        /* Controles Horizontais Alinhados Perfeitamente */
         .action-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             width: 100%;
             margin-bottom: 5px;
         }
@@ -292,11 +298,11 @@
         .control-btn {
             background: transparent;
             color: var(--text-color);
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border: none;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -309,21 +315,21 @@
         }
 
         .item-qty {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
-            min-width: 28px;
+            min-width: 25px;
             color: #fff;
             text-align: center;
         }
 
-        /* Botão Adicionar */
+        /* Botão Adicionar ao Lado */
         .add-to-cart-btn {
             background: transparent;
             color: #fff;
             border: 1px solid var(--neon-pink);
-            padding: 7px 16px;
+            padding: 6px 14px;
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -338,9 +344,9 @@
             box-shadow: 0 0 10px var(--neon-pink);
         }
 
-        /* Submenu de Descrição Oculto / Aparece embaixo */
+        /* Submenu de Descrição Retrátil Embaixo */
         .item-content p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             line-height: 1.4;
             max-height: 0;
@@ -352,9 +358,9 @@
         .menu-item:hover .item-content p {
             max-height: 100px;
             opacity: 1;
-            margin-top: 15px;
+            margin-top: 12px;
             border-top: 1px dashed rgba(255, 255, 255, 0.1);
-            padding-top: 10px;
+            padding-top: 8px;
         }
 
         /* O Espaço */
@@ -445,6 +451,7 @@
         <h2 class="section-title">Nosso Cardápio</h2>
         
         <div class="menu-container">
+            
             <div class="menu-category">
                 <div class="category-title">🍔 Hambúrgueres</div>
                 
@@ -498,15 +505,100 @@
                         <p>Pão australiano, burger 180g, queijo prato, MUITO bacon, onion rings e molho smoky.</p>
                     </div>
                 </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/hamburguer4.png" alt="Supreme Mush">
+                    <div class="item-content">
+                        <h4>4. Supreme Mush</h4>
+                        <div class="item-price">R$ 34,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Supreme Mush" data-price="34.90">Adicionar</button>
+                        </div>
+                        <p>Hambúrguer artesanal, queijo suíço, cogumelos salteados e molho cremoso de alho.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/hamburguer5.png" alt="Spicy Y2K">
+                    <div class="item-content">
+                        <h4>5. Spicy Y2K 🌶️</h4>
+                        <div class="item-price">R$ 32,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Spicy Y2K" data-price="32.90">Adicionar</button>
+                        </div>
+                        <p>Burger 180g, cheddar, jalapeño, cebola roxa e maionese apimentada.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/hamburguer6.png" alt="Crispy Chicken">
+                    <div class="item-content">
+                        <h4>6. Crispy Chicken</h4>
+                        <div class="item-price">R$ 29,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Crispy Chicken" data-price="29.90">Adicionar</button>
+                        </div>
+                        <p>Frango empanado crocante, queijo cheddar, alface americana e molho honey mustard.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/hamburguer7.png" alt="Ferreira's Special">
+                    <div class="item-content">
+                        <h4>7. Ferreira's Special ❤️</h4>
+                        <div class="item-price">R$ 38,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Ferreira's Special" data-price="38.90">Adicionar</button>
+                        </div>
+                        <p>Burger duplo smash, cheddar duplo, bacon crocante, onion rings, molho da casa e batata chips.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="menu-category">
-                <div class="category-title">🍟 Porções & Bebidas</div>
+                <div class="category-title">🍟 Porções</div>
                 
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/batata1.png" alt="Batata Frita Tradicional">
+                    <div class="item-content">
+                        <h4>Batata Tradicional</h4>
+                        <div class="item-price">R$ 14,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Batata Tradicional" data-price="14.90">Adicionar</button>
+                        </div>
+                        <p>Batata frita tradicional crocante e sequinha por fora.</p>
+                    </div>
+                </div>
+
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/batata2.png" alt="Batata com Cheddar e Bacon">
                     <div class="item-content">
-                        <h4>Batata com Cheddar</h4>
+                        <h4>Batata Cheddar & Bacon</h4>
                         <div class="item-price">R$ 27,90</div>
                         <div class="action-row">
                             <div class="quantity-selector">
@@ -514,11 +606,30 @@
                                 <span class="item-qty">0</span>
                                 <button class="control-btn plus">+</button>
                             </div>
-                            <button class="add-to-cart-btn" data-name="Batata com Cheddar" data-price="27.90">Adicionar</button>
+                            <button class="add-to-cart-btn" data-name="Batata Cheddar & Bacon" data-price="27.90">Adicionar</button>
                         </div>
                         <p>Batata frita coberta com muito cheddar cremoso e bacon em cubos.</p>
                     </div>
                 </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/batata3.png" alt="Onion Rings">
+                    <div class="item-content">
+                        <h4>Onion Rings</h4>
+                        <div class="item-price">R$ 16,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Onion Rings" data-price="16.90">Adicionar</button>
+                        </div>
+                        <p>Anéis de cebola gigantes super crocantes e temperados.</p>
+                    </div>
+                </div>
+
+                <div class="category-title" style="margin-top: 30px;">🥤 Shakes & Bebidas</div>
 
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/milkshake1.png" alt="Chocolate Supreme">
@@ -536,6 +647,74 @@
                         <p>Milk shake de chocolate cremoso com chantilly.</p>
                     </div>
                 </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/milkshake2.png" alt="Pink Strawberry">
+                    <div class="item-content">
+                        <h4>Pink Strawberry</h4>
+                        <div class="item-price">R$ 18,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Pink Strawberry" data-price="18.90">Adicionar</button>
+                        </div>
+                        <p>Milk shake de morango com calda especial artesanal.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/milkshake3.png" alt="Cookies & Cream">
+                    <div class="item-content">
+                        <h4>Cookies & Cream</h4>
+                        <div class="item-price">R$ 20,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Cookies & Cream" data-price="20.90">Adicionar</button>
+                        </div>
+                        <p>Sabores gourmet irresistíveis com pedaços de biscoito para acompanhar seu burger.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/milkshake4.png" alt="Bubblegum 2000">
+                    <div class="item-content">
+                        <h4>Bubblegum 2000</h4>
+                        <div class="item-price">R$ 22,90</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Bubblegum 2000" data-price="22.90">Adicionar</button>
+                        </div>
+                        <p>Milk shake azul estilo retro-futurista sabor chiclete.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="thumb-img" src="assets/img/milkshake5.png" alt="Refrigerantes e Sucos">
+                    <div class="item-content">
+                        <h4>Refrigerantes / Sucos</h4>
+                        <div class="item-price">R$ 6,50</div>
+                        <div class="action-row">
+                            <div class="quantity-selector">
+                                <button class="control-btn minus">-</button>
+                                <span class="item-qty">0</span>
+                                <button class="control-btn plus">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" data-name="Refrigerantes / Sucos" data-price="6.50">Adicionar</button>
+                        </div>
+                        <p>Lata tradicional ou sucos naturais diversos.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>    
@@ -545,7 +724,6 @@
     </footer>
 
     <script>
-        // Carrega carrinho existente se houver
         let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
         
         function atualizarBadge() {
@@ -582,7 +760,6 @@
 
             addBtn.addEventListener('click', () => {
                 if (localQty > 0) {
-                    // Verifica se o item já está no carrinho
                     const itemExistente = carrinho.find(i => i.name === name);
                     
                     if (itemExistente) {
@@ -591,7 +768,6 @@
                         carrinho.push({ name, price, qtd: localQty });
                     }
                     
-                    // Salva no LocalStorage para a outra página ler
                     localStorage.setItem('carrinho', JSON.stringify(carrinho));
                     
                     localQty = 0;
@@ -602,4 +778,4 @@
         });
     </script>
 </body>
-</html>  
+</html>
