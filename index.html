@@ -6,7 +6,7 @@
     <title>Ferreira's Bite - Good Food, Good Mood</title>
     <style>
         :root {
-            --card-bg: rgba(22, 26, 29, 0.9); /* Deixei os cards levemente transparentes para a imagem aparecer ao fundo */
+            --card-bg: rgba(22, 26, 29, 0.92);
             --neon-red: #ff0055;
             --neon-pink: #ff70a6;
             --neon-blue: #00f0ff;
@@ -21,12 +21,11 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* CORREÇÃO AQUI: A imagem agora cobre todo o fundo do site de forma estática */
         body {
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
-            background: linear-gradient(rgba(11, 9, 10, 0.75), rgba(11, 9, 10, 0.9)), url('assets/img/fachada1.png');
+            background: linear-gradient(rgba(11, 9, 10, 0.75), rgba(11, 9, 10, 0.9)), url('assets/img/fachada.jpg');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -88,7 +87,7 @@
             text-shadow: 0 0 8px var(--neon-pink);
         }
 
-        /* Hero Section ajustada sem background próprio */
+        /* Hero Section */
         .hero {
             margin-top: 70px;
             padding: 180px 20px;
@@ -166,8 +165,9 @@
         /* Menu / Cardápio */
         .menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
+            align-items: start;
         }
 
         .menu-category {
@@ -176,7 +176,7 @@
             border-radius: 10px;
             padding: 25px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.7);
-            backdrop-filter: blur(5px); /* Efeito de vidro fosco sutil nos cards */
+            backdrop-filter: blur(5px);
         }
 
         .category-title {
@@ -192,8 +192,8 @@
 
         .menu-item {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            gap: 15px;
+            align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -205,17 +205,38 @@
             padding-bottom: 0;
         }
 
-        .item-details h4 {
-            font-size: 16px;
-            text-transform: uppercase;
-            color: #fff;
+        /* Estilo das miniaturas das imagens dos lanches/bebidas */
+        .thumb-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+            background-color: #222;
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
             margin-bottom: 5px;
         }
 
-        .item-details p {
+        .item-content h4 {
+            font-size: 15px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .item-content p {
             font-size: 13px;
             color: var(--text-muted);
-            padding-right: 10px;
+            line-height: 1.4;
         }
 
         .item-price {
@@ -223,6 +244,7 @@
             color: var(--neon-blue);
             text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
             white-space: nowrap;
+            font-size: 14px;
         }
 
         /* Estilo da Fachada Mockup */
@@ -278,7 +300,7 @@
                 gap: 15px;
             }
             body {
-                background-attachment: scroll; /* Melhora performance no celular */
+                background-attachment: scroll;
             }
             .hero {
                 padding: 100px 20px;
@@ -332,59 +354,80 @@
                 <div class="category-title">🍔 Hambúrgueres</div>
                 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>1. Classic Bite</h4>
+                    <img class="thumb-img" src="assets/img/hamburguer1.png" alt="Classic Bite">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>1. Classic Bite</h4>
+                            <div class="item-price">R$ 28,90</div>
+                        </div>
                         <p>Pão brioche, hambúrguer artesanal 150g, queijo cheddar, alface, tomate e molho especial da casa.</p>
                     </div>
-                    <div class="item-price">R$ 28,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>2. Hot Ferreira 🔥</h4>
+                    <img class="thumb-img" src="assets/img/hamburguer2.png" alt="Hot Ferreira">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>2. Hot Ferreira 🔥</h4>
+                            <div class="item-price">R$ 31,90</div>
+                        </div>
                         <p>Hambúrguer 180g, cheddar duplo, bacon crocante, cebola caramelizada e molho barbecue.</p>
                     </div>
-                    <div class="item-price">R$ 31,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>3. Midnight Bacon</h4>
+                    <img class="thumb-img" src="assets/img/hamburguer3.png" alt="Midnight Bacon">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>3. Midnight Bacon</h4>
+                            <div class="item-price">R$ 33,90</div>
+                        </div>
                         <p>Pão australiano, burger 180g, queijo prato, MUITO bacon, onion rings e molho smoky.</p>
                     </div>
-                    <div class="item-price">R$ 33,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>4. Supreme Mush</h4>
+                    <img class="thumb-img" src="assets/img/hamburguer4.png" alt="Supreme Mush">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>4. Supreme Mush</h4>
+                            <div class="item-price">R$ 34,90</div>
+                        </div>
                         <p>Hambúrguer artesanal, queijo suíço, cogumelos salteados e molho cremoso de alho.</p>
                     </div>
-                    <div class="item-price">R$ 34,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>5. Spicy Y2K 🌶️</h4>
+                    <img class="thumb-img" src="assets/img/hamburguer5.png" alt="Spicy Y2K">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>5. Spicy Y2K 🌶️</h4>
+                            <div class="item-price">R$ 32,90</div>
+                        </div>
                         <p>Burger 180g, cheddar, jalapeño, cebola roxa e maionese apimentada.</p>
                     </div>
-                    <div class="item-price">R$ 32,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>6. Crispy Chicken</h4>
+                    <img class="thumb-img" src="assets/img/hamburguer6.png" alt="Crispy Chicken">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>6. Crispy Chicken</h4>
+                            <div class="item-price">R$ 29,90</div>
+                        </div>
                         <p>Frango empanado crocante, queijo cheddar, alface americana e molho honey mustard.</p>
                     </div>
-                    <div class="item-price">R$ 29,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>7. Ferreira's Special ❤️</h4>
+                    <img class="thumb-img" src="assets/img/hamburguer7.png" alt="Ferreira's Special">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>7. Ferreira's Special ❤️</h4>
+                            <div class="item-price">R$ 38,90</div>
+                        </div>
                         <p>Burger duplo smash, cheddar duplo, bacon crocante, onion rings, molho da casa e batata chips.</p>
                     </div>
-                    <div class="item-price">R$ 38,90</div>
                 </div>
             </div>
 
@@ -392,69 +435,93 @@
                 <div class="category-title">🍟 Porções</div>
                 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>Batata Frita Tradicional</h4>
+                    <img class="thumb-img" src="assets/img/batata1.png" alt="Batata Frita Tradicional">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Batata Frita Tradicional</h4>
+                            <div class="item-price">R$ 14,90 - 24,90</div>
+                        </div>
                         <p>Pequena / Média / Grande</p>
                     </div>
-                    <div class="item-price">R$ 14,90 - 24,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>Batata com Cheddar e Bacon</h4>
+                    <img class="thumb-img" src="assets/img/batata2.png" alt="Batata com Cheddar e Bacon">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Batata com Cheddar e Bacon</h4>
+                            <div class="item-price">R$ 27,90</div>
+                        </div>
                         <p>Batata frita coberta com muito cheddar cremoso e bacon em cubos.</p>
                     </div>
-                    <div class="item-price">R$ 27,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>Onion Rings</h4>
+                    <img class="thumb-img" src="assets/img/batata3.png" alt="Onion Rings">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Onion Rings</h4>
+                            <div class="item-price">R$ 16,90 - 24,90</div>
+                        </div>
                         <p>Anéis de cebola super crocantes. Pequena / Grande.</p>
                     </div>
-                    <div class="item-price">R$ 16,90 - 24,90</div>
                 </div>
 
                 <div class="category-title" style="margin-top: 30px;">🥤 Milk Shakes & Bebidas</div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>Chocolate Supreme</h4>
+                    <img class="thumb-img" src="assets/img/milkshake1.png" alt="Chocolate Supreme">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Chocolate Supreme</h4>
+                            <div class="item-price">R$ 19,90</div>
+                        </div>
                         <p>Milk shake de chocolate cremoso com chantilly.</p>
                     </div>
-                    <div class="item-price">R$ 19,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>Pink Strawberry</h4>
+                    <img class="thumb-img" src="assets/img/milkshake2.png" alt="Pink Strawberry">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Pink Strawberry</h4>
+                            <div class="item-price">R$ 18,90</div>
+                        </div>
                         <p>Milk shake de morango com calda especial artesanal.</p>
                     </div>
-                    <div class="item-price">R$ 18,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>Cookies & Cream / Peanut Bite</h4>
+                    <img class="thumb-img" src="assets/img/milkshake3.png" alt="Cookies & Cream">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Cookies & Cream / Peanut Bite</h4>
+                            <div class="item-price">R$ 20,90 - 21,90</div>
+                        </div>
                         <p>Sabores gourmet irresistíveis para acompanhar seu burger.</p>
                     </div>
-                    <div class="item-price">R$ 20,90 - 21,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>Bubblegum 2000</h4>
+                    <img class="thumb-img" src="assets/img/milkshake14.png" alt="Bubblegum 2000">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Bubblegum 2000</h4>
+                            <div class="item-price">R$ 22,90</div>
+                        </div>
                         <p>Milk shake azul estilo anos 2000 sabor chiclete.</p>
                     </div>
-                    <div class="item-price">R$ 22,90</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="item-details">
-                        <h4>Refrigerantes / Sucos Naturais</h4>
+                    <img class="thumb-img" src="assets/img/milkshake5.png" alt="Refrigerantes e Sucos">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Refrigerantes / Sucos Naturais</h4>
+                            <div class="item-price">R$ 6,50 - 9,90</div>
+                        </div>
                         <p>Lata tradicional ou sucos (Laranja, Limão, Morango, Maracujá, Abacaxi com Hortelã).</p>
                     </div>
-                    <div class="item-price">R$ 6,50 - 9,90</div>
                 </div>
             </div>
         </div>
