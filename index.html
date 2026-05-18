@@ -11,7 +11,7 @@
             --neon-pink: #ff70a6;
             --neon-blue: #00f0ff;
             --text-color: #f5f3f4;
-            --text-muted: #b1a7a6;
+            --text-muted: #dcd6d6; /* Tornou o texto um pouco mais claro para destacar o negrito */
         }
 
         * {
@@ -197,7 +197,7 @@
             box-shadow: 0 0 10px var(--neon-blue);
         }
 
-        /* ESTRUTURA DO CARDÁPIO: Ocupa a largura inteira para rodar de forma contínua */
+        /* Estrutura do Cardápio */
         .menu-container {
             width: 100%;
             margin-bottom: 40px;
@@ -214,15 +214,15 @@
             text-shadow: 0 0 8px rgba(255, 0, 85, 0.6);
         }
 
-        /* Grid que espalha os itens lado a lado e quebra a linha quando falta espaço */
+        /* Grid */
         .items-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Aumentado ligeiramente para acomodar título + preço lado a lado */
             gap: 20px;
             margin-bottom: 40px;
         }
 
-        /* CARDS COMPACTOS: Pouca coisa maior que a própria imagem */
+        /* Cards Justos e Ajustados */
         .menu-item {
             display: flex;
             flex-direction: column;
@@ -243,29 +243,40 @@
             box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
         }
 
-        /* Imagem ajustada preenchendo as laterais do card justo */
+        /* Auto-ajuste das imagens sem cortes */
         .thumb-img {
             width: 100%;
             height: 130px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: #1a1a1a;
-            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: rgba(0, 0, 0, 0.4);
+            margin-bottom: 12px;
+            padding: 4px;
         }
 
         .item-content {
             width: 100%;
         }
 
-        .item-content h4 {
+        /* Bloco superior com Título e Preço alinhados lado a lado */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 12px;
+            gap: 8px;
+        }
+
+        .item-header h4 {
             font-size: 15px;
             text-transform: uppercase;
             color: #fff;
-            margin-bottom: 4px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: left;
         }
 
         .item-price {
@@ -273,10 +284,10 @@
             color: var(--neon-blue);
             text-shadow: 0 0 5px rgba(0, 240, 255, 0.4);
             font-size: 14px;
-            margin-bottom: 10px;
+            white-space: nowrap;
         }
 
-        /* Controles Horizontais Otimizados */
+        /* Controles Horizontais */
         .action-row {
             display: flex;
             justify-content: space-between;
@@ -340,23 +351,25 @@
             box-shadow: 0 0 8px var(--neon-pink);
         }
 
-        /* Descrição que surge sutilmente ao passar o mouse */
+        /* Descrição Ajustada: Fonte maior e em negrito */
         .item-content p {
-            font-size: 11px;
+            font-size: 13px;          /* Aumentado o tamanho da fonte */
+            font-weight: bold;         /* Colocado em negrito */
             color: var(--text-muted);
-            line-height: 1.3;
+            line-height: 1.4;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            text-align: left;
         }
 
         .menu-item:hover .item-content p {
-            max-height: 70px;
+            max-height: 90px;
             opacity: 1;
-            margin-top: 10px;
+            margin-top: 12px;
             border-top: 1px dashed rgba(255, 255, 255, 0.1);
-            padding-top: 6px;
+            padding-top: 8px;
         }
 
         /* O Espaço */
@@ -453,8 +466,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/hamburguer1.png" alt="Classic Bite">
                     <div class="item-content">
-                        <h4>1. Classic Bite</h4>
-                        <div class="item-price">R$ 28,90</div>
+                        <div class="item-header">
+                            <h4>1. Classic Bite</h4>
+                            <div class="item-price">R$ 28,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -470,8 +485,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/hamburguer2.png" alt="Hot Ferreira">
                     <div class="item-content">
-                        <h4>2. Hot Ferreira 🔥</h4>
-                        <div class="item-price">R$ 31,90</div>
+                        <div class="item-header">
+                            <h4>2. Hot Ferreira 🔥</h4>
+                            <div class="item-price">R$ 31,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -487,8 +504,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/hamburguer3.png" alt="Midnight Bacon">
                     <div class="item-content">
-                        <h4>3. Midnight Bacon</h4>
-                        <div class="item-price">R$ 33,90</div>
+                        <div class="item-header">
+                            <h4>3. Midnight Bacon</h4>
+                            <div class="item-price">R$ 33,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -504,8 +523,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/hamburguer4.png" alt="Supreme Mush">
                     <div class="item-content">
-                        <h4>4. Supreme Mush</h4>
-                        <div class="item-price">R$ 34,90</div>
+                        <div class="item-header">
+                            <h4>4. Supreme Mush</h4>
+                            <div class="item-price">R$ 34,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -521,8 +542,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/hamburguer5.png" alt="Spicy Y2K">
                     <div class="item-content">
-                        <h4>5. Spicy Y2K 🌶️</h4>
-                        <div class="item-price">R$ 32,90</div>
+                        <div class="item-header">
+                            <h4>5. Spicy Y2K 🌶️</h4>
+                            <div class="item-price">R$ 32,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -538,8 +561,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/hamburguer6.png" alt="Crispy Chicken">
                     <div class="item-content">
-                        <h4>6. Crispy Chicken</h4>
-                        <div class="item-price">R$ 29,90</div>
+                        <div class="item-header">
+                            <h4>6. Crispy Chicken</h4>
+                            <div class="item-price">R$ 29,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -555,8 +580,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/hamburguer7.png" alt="Ferreira's Special">
                     <div class="item-content">
-                        <h4>7. Ferreira's Special ❤️</h4>
-                        <div class="item-price">R$ 38,90</div>
+                        <div class="item-header">
+                            <h4>7. Ferreira's Special ❤️</h4>
+                            <div class="item-price">R$ 38,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -579,8 +606,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/batata1.png" alt="Batata Tradicional">
                     <div class="item-content">
-                        <h4>Batata Tradicional</h4>
-                        <div class="item-price">R$ 14,90</div>
+                        <div class="item-header">
+                            <h4>Batata Tradicional</h4>
+                            <div class="item-price">R$ 14,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -596,8 +625,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/batata2.png" alt="Batata Cheddar & Bacon">
                     <div class="item-content">
-                        <h4>Batata Cheddar & Bacon</h4>
-                        <div class="item-price">R$ 27,90</div>
+                        <div class="item-header">
+                            <h4>Batata Cheddar & Bacon</h4>
+                            <div class="item-price">R$ 27,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -613,8 +644,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/batata3.png" alt="Onion Rings">
                     <div class="item-content">
-                        <h4>Onion Rings</h4>
-                        <div class="item-price">R$ 16,90</div>
+                        <div class="item-header">
+                            <h4>Onion Rings</h4>
+                            <div class="item-price">R$ 16,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -637,8 +670,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/milkshake1.png" alt="Chocolate Supreme">
                     <div class="item-content">
-                        <h4>Chocolate Supreme</h4>
-                        <div class="item-price">R$ 19,90</div>
+                        <div class="item-header">
+                            <h4>Chocolate Supreme</h4>
+                            <div class="item-price">R$ 19,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -654,8 +689,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/milkshake2.png" alt="Pink Strawberry">
                     <div class="item-content">
-                        <h4>Pink Strawberry</h4>
-                        <div class="item-price">R$ 18,90</div>
+                        <div class="item-header">
+                            <h4>Pink Strawberry</h4>
+                            <div class="item-price">R$ 18,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -671,8 +708,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/milkshake3.png" alt="Cookies & Cream">
                     <div class="item-content">
-                        <h4>Cookies & Cream</h4>
-                        <div class="item-price">R$ 20,90</div>
+                        <div class="item-header">
+                            <h4>Cookies & Cream</h4>
+                            <div class="item-price">R$ 20,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -688,8 +727,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/milkshake4.png" alt="Bubblegum 2000">
                     <div class="item-content">
-                        <h4>Bubblegum 2000</h4>
-                        <div class="item-price">R$ 22,90</div>
+                        <div class="item-header">
+                            <h4>Bubblegum 2000</h4>
+                            <div class="item-price">R$ 22,90</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
@@ -705,8 +746,10 @@
                 <div class="menu-item">
                     <img class="thumb-img" src="assets/img/milkshake5.png" alt="Refrigerantes / Sucos">
                     <div class="item-content">
-                        <h4>Refrigerantes / Sucos</h4>
-                        <div class="item-price">R$ 6,50</div>
+                        <div class="item-header">
+                            <h4>Refrigerantes / Sucos</h4>
+                            <div class="item-price">R$ 6,50</div>
+                        </div>
                         <div class="action-row">
                             <div class="quantity-selector">
                                 <button class="control-btn minus">-</button>
