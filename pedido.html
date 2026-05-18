@@ -324,7 +324,7 @@
                 return;
             }
 
-            // Monta o texto do pedido
+            // Monta o texto do pedido estruturado
             let textoWhatsApp = `🍔 *NOVO PEDIDO - FERREIRA'S BITE* 🍔\n\n`;
             textoWhatsApp += `👤 *Cliente:* ${nome}\n`;
             textoWhatsApp += `📍 *Endereço:* ${endereco}\n`;
@@ -340,19 +340,19 @@
 
             textoWhatsApp += `\n💰 *Total Geral:* R$ ${totalGeral.toFixed(2).replace('.', ',')}`;
 
-            // Substitua pelo número da sua hamburgueria (com código do país e DDD, ex: 5513999999999)
+            // Substitua aqui pelo número real que vai receber as mensagens
             const numeroTelefone = '5513999999999'; 
             
-            // Abre o WhatsApp com a mensagem formatada
+            // Abre o link do WhatsApp passando o texto formatado
             const url = `https://api.whatsapp.com/send?phone=${numeroTelefone}&text=${encodeURIComponent(textoWhatsApp)}`;
             
-            // Limpa o carrinho após enviar (opcional)
+            // Opcional: Limpa o carrinho após finalizar o pedido para evitar duplicados
             localStorage.removeItem('carrinho');
             
             window.open(url, '_blank');
         });
 
-        // Inicializa a página carregando os dados
+        // Inicializa a tabela ao abrir a página
         renderizarCarrinho();
     </script>
 </body>
