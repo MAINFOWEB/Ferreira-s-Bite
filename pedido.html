@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Carrinho - Ferreira's Bite</title>
+    <style>
+        :root {
+            --card-bg: rgba(22, 26, 29, 0.95);
+            --neon-red: #ff0055;
+            --neon-pink: #ff70a6;
+            --neon-blue: #00f0ff;
+            --text-color: #f5f3f4;
+            --text-muted: #b1a7a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background: linear-gradient(rgba(11, 9, 10, 0.85), rgba(11, 9, 10, 0.95)), url('assets/img/fachada.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Topo da página */
+        .header-carrinho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--neon-red);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(255, 0, 85, 0.1);
+        }
+
+        .header-carrinho h1 {
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-red);
+        }
+
+        .btn-voltar {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-voltar:hover {
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        /* Lista de Itens */
+        .carrinho-wrapper {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        .item-carrinho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .item-carrinho:last-child {
+            border-bottom: none;
+        }
+
+        .item-info h3 {
+            font-size: 18px;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .item-info p {
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Controles de quantidade internos do carrinho */
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 2px;
+        }
+
+        .control-btn {
+            background: transparent;
+            color: var(--text-color);
+            width: 30px;
+            height: 30px;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            color: var(--neon-pink);
+        }
+
+        .item-qty {
+            font-size: 14px;
+            font-weight: bold;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .btn-remover {
+            background: transparent;
+            border: none;
+            color: var(--neon-red);
+            cursor: pointer;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-remover:hover {
+            text-shadow: 0 0 5px var(--neon-red);
+        }
+
+        /* Totalizador */
+        .total-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--neon-blue);
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .total-container span:last-child {
+            color: var(--neon-pink);
+            text-shadow: 0 0 8px var(--neon-pink);
+        }
+
+        /* Formulário de Finalização */
+        .form-checkout {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 0, 85, 0.15);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .form-checkout h2 {
+            font-size: 20px;
+            text-transform: uppercase;
+            color: var(--neon-pink);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(255, 112, 166, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 10px;
+            color: #fff;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+        }
+
+        .entrega-fields {
+            display: none;
+        }
+
+        /* Botão Enviar WhatsApp */
+        .btn-enviar {
+            display: block;
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--neon-pink);
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 112, 166, 0.2);
+            transition: 0.3s ease;
+            margin-top: 25px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-enviar:hover {
+            background: var(--neon-pink);
+            color: #0b090a;
+            box-shadow: 0 0 25px var(--neon-pink);
+        }
+
+        .carrinho-vazio {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-carrinho">
+            <h1>Seu Pedido</h1>
+            <a href="index.html" class="btn-voltar">← Voltar ao Menu</a>
+        </div>
+
+        <div class="carrinho-wrapper">
+            <div id="listaItens">
+                </div>
+            
+            <div class="total-container">
+                <span>Total Geral:</span>
+                <span id="valorTotalGeral">R$ 0,00</span>
+            </div>
+        </div>
+
+        <form class="form-checkout" id="checkoutForm">
+            <h2>Dados de Entrega / Retirada</h2>
+            
+            <div class="form-group">
+                <label for="nome">Seu Nome:</label>
+                <input type="text" id="nome" required placeholder="Ex: Márcio Ferreira">
+            </div>
+
+            <div class="form-group">
+                <label for="metodo">Como prefere receber?</label>
+                <select id="metodo" required onchange="toggleEntregaFields()">
+                    <option value="retirada">Retirar no Balcão (O Espaço)</option>
+                    <option value="entrega">Entrega em Domicílio</option>
+                </select>
+            </div>
+
+            <div id="camposEntrega" class="entrega-fields">
+                <div class="form-group">
+                    <label for="endereco">Endereço (Rua, Número):</label>
+                    <input type="text" id="endereco" placeholder="Ex: Av. Principal, 123">
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" placeholder="Ex: Centro">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="pagamento">Forma de Pagamento:</label>
+                <select id="pagamento" required>
+                    <option value="Pix">Pix</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-enviar">Enviar Pedido via WhatsApp 🚀</button>
+        </form>
+    </div>
+
+    <script>
+        // Carrega o carrinho armazenado
+        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        const listaItensDiv = document.getElementById('listaItens');
+        const valorTotalGeralLabel = document.getElementById('valorTotalGeral');
+
+        function renderizarCarrinho() {
+            listaItensDiv.innerHTML = '';
+            
+            if (carrinho.length === 0) {
+                listaItensDiv.innerHTML = '<div class="carrinho-vazio">Seu carrinho está vazio. Volte ao cardápio e escolha suas delícias!</div>';
+                valorTotalGeralLabel.textContent = 'R$ 0,00';
+                return;
+            }
+
+            let totalGeral = 0;
+
+            carrinho.forEach((item, index) => {
+                const totalItem = item.price * item.qtd;
+                totalGeral += totalItem;
+
+                const itemRow = document.createElement('div');
+                itemRow.className = 'item-carrinho';
+                itemRow.innerHTML = `
+                    <div class="item-info">
+                        <h3>${item.name}</h3>
+                        <p>R$ ${item.price.toFixed(2).replace('.', ',')} un</p>
+                    </div>
+                    <div class="item-actions">
+                        <div class="quantity-control">
+                            <button class="control-btn" onclick="alterarQtd(${index}, -1)">-</button>
+                            <span class="item-qty">${item.qtd}</span>
+                            <button class="control-btn" onclick="alterarQtd(${index}, 1)">+</button>
+                        </div>
+                        <button class="btn-remover" onclick="removerItem(${index})">Excluir</button>
+                    </div>
+                `;
+                listaItensDiv.appendChild(itemRow);
+            });
+
+            valorTotalGeralLabel.textContent = `R$ ${totalGeral.toFixed(2).replace('.', ',')}`;
+        }
+
+        function alterarQtd(index, valor) {
+            carrinho[index].qtd += valor;
+            if (carrinho[index].qtd <= 0) {
+                carrinho.splice(index, 1);
+            }
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            renderizarCarrinho();
+        }
+
+        function removerItem(index) {
+            carrinho.splice(index, 1);
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            renderizarCarrinho();
+        }
+
+        function toggleEntregaFields() {
+            const metodo = document.getElementById('metodo').value;
+            const camposEntrega = document.getElementById('camposEntrega');
+            if (metodo === 'entrega') {
+                camposEntrega.style.display = 'block';
+                document.getElementById('endereco').required = true;
+                document.getElementById('bairro').required = true;
+            } else {
+                camposEntrega.style.display = 'none';
+                document.getElementById('endereco').required = false;
+                document.getElementById('bairro').required = false;
+            }
+        }
+
+        // Envio estruturado para o WhatsApp
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (carrinho.length === 0) {
+                alert('Seu carrinho está vazio!');
+                return;
+            }
+
+            const nome = document.getElementById('nome').value;
+            const metodo = document.getElementById('metodo').value;
+            const pagamento = document.getElementById('pagamento').value;
+            
+            let textoPedido = `*🍔 NOVO PEDIDO - FERREIRA'S BITE* 🍔\n\n`;
+            textoPedido += `*Cliente:* ${nome}\n`;
+            textoPedido += `--------------------------------\n\n`;
+            
+            let totalGeral = 0;
+            carrinho.forEach(item => {
+                const subtotal = item.price * item.qtd;
+                totalGeral += subtotal;
+                textoPedido += `▪️ *${item.qtd}x* ${item.name} \n    (Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')})\n\n`;
+            });
+            
+            textoPedido += `--------------------------------\n`;
+            textoPedido += `*Total dos Itens:* R$ ${totalGeral.toFixed(2).replace('.', ',')}\n`;
+            textoPedido += `*Forma de Recebimento:* ${metodo === 'entrega' ? 'Delivery' : 'Retirada no Balcão'}\n`;
+            
+            if (metodo === 'entrega') {
+                const endereco = document.getElementById('endereco').value;
+                const bairro = document.getElementById('bairro').value;
+                textoPedido += `*Endereço:* ${endereco}\n*Bairro:* ${bairro}\n`;
+            }
+            
+            textoPedido += `*Forma de Pagamento:* ${pagamento}\n`;
+
+            // COLoque aqui o número do WhatsApp da Hamburgueria (apenas números com DDD)
+            // Exemplo fictício: 5513999999999
+            const numeroTelefone = "5513999999999"; 
+            
+            const linkWhatsapp = `https://api.whatsapp.com/send?phone=${numeroTelefone}&text=${encodeURIComponent(textoPedido)}`;
+            
+            // Limpa carrinho após enviar
+            localStorage.removeItem('carrinho');
+            
+            // Redireciona
+            window.location.href = linkWhatsapp;
+        });
+
+        // Inicializa a tela lendo os itens
+        renderizarCarrinho();
+    </script>
+</body>
+</html>
