@@ -19,7 +19,7 @@ O Ferreira's Bite é uma aplicação web de alta fidelidade que funde a estétic
 2. Abra o arquivo `index.html` diretamente no seu navegador ou utilize a extensão "Live Server" no VS Code.
 
 ## 📝 Licença
-Este projeto está sob a licença MIT.
+Este projeto está sob a licença GPL 3.0.
 
 ---
 Desenvolvido por Márcio.
