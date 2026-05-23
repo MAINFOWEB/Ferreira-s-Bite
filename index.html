@@ -413,6 +413,44 @@
             margin-bottom: 20px;
         }
 
+        /* ESTILOS DOS CARDS DO AMBIENTE ADICIONADOS */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .feature-card {
+            background: rgba(11, 9, 10, 0.6);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+        }
+
+        .feature-card h3 {
+            color: var(--neon-pink);
+            text-transform: uppercase;
+            font-size: 15px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: #b1a7a6;
+            line-height: 1.5;
+            font-weight: normal;
+            text-shadow: none;
+        }
+
         footer {
             background-color: rgba(0, 0, 0, 0.9);
             text-align: center;
@@ -476,20 +514,35 @@
     <section id="ambiente">
         <h2 class="section-title">FERREIRA'S BITE: CADA DETALHE, UMA PAIXÃO. CADA MORDIDA, UMA VONTADE DE QUERO MAIS.</h2>
         <div class="facade-mock">
+            
+            <div class="neon-sign">FERREIRA’S BITE: ONDE O SABOR ENCOTRA O SEU MELHOR MOMENTO.</div>
+            <p style="color: var(--neon-blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">BITE • EAT • REPEAT</p>
+            <p style="max-width: 700px; margin: 0 auto; color: #ffffff; font-weight: bold; font-size: 1.25rem; text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 0, 255, 0.5); margin-bottom: 30px;">
+                O Ferreira's Bite une a nostalgia dos clássicos Diners americanos à ousadia da estética Cyberpunk. Do neon vibrante ao couro vermelho, cada detalhe foi pensado para uma experiência autêntica e memorável.
+                <br><br>
+                Aqui, a regra é clara: BITE. EAT. REPEAT.
+                <br><br>
+                Elevamos o padrão do hambúrguer artesanal com ingredientes selecionados e um ambiente perfeito para recarregar as energias. Seja para um encontro ou uma pausa, nosso balcão está pronto para você.
+                <br><br>
+                Onde o sabor encontra o seu melhor momento. Good Food, Good Mood.
+            </p>
+
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3>⚡ Luzes de Neon</h3>
+                    <h3>⚡ LUZES DE NEON</h3>
                     <p>Iluminação imersiva inspirada na cultura retro-futurista de Tóquio e dos Diners americanos clássicos.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>🎸 Clássicos e Futuro</h3>
+                    <h3>🎸 CLÁSSICOS E FUTURO</h3>
                     <p>Música ambiente selecionada a dedo para acompanhar o compasso de cada mordida.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>📸 Espaço Instagramável</h3>
+                    <h3>📸 ESPAÇO INSTAGRAMÁVEL</h3>
                     <p>Cada canto do nosso balcão e sofás vermelhos rende a foto perfeita para o seu feed.</p>
                 </div>
             </div>
+            
+        </div>
     </section>
 
     <section id="cardapio">
