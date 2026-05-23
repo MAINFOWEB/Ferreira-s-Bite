@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferreira's Bite - O Espaço</title>
+    <style>
+        :root {
+            --card-bg: rgba(22, 26, 29, 0.95);
+            --neon-red: #ff0055;
+            --neon-pink: #ff70a6;
+            --neon-blue: #00f0ff;
+            --text-color: #f5f3f4;
+            --text-muted: #b1a7a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background: linear-gradient(rgba(11, 9, 10, 0.85), rgba(11, 9, 10, 0.95)), url('assets/img/fachada.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            padding-top: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(11, 9, 10, 0.95);
+            border-bottom: 2px solid var(--neon-red);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red);
+        }
+
+        .logo span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 8px var(--neon-pink);
+        }
+
+        /* Main Content Container */
+        .main-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Box Espaço Traduzido do Layout */
+        .facade-mock {
+            background: var(--card-bg);
+            border: 2px solid var(--neon-red);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.3);
+            backdrop-filter: blur(5px);
+            margin-bottom: 30px;
+        }
+
+        .neon-sign {
+            font-size: 32px;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px #fff, 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-red);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        /* Características Extras do Espaço */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+        }
+
+        .feature-card h3 {
+            color: var(--neon-pink);
+            text-transform: uppercase;
+            font-size: 16px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: normal;
+            text-shadow: none;
+        }
+
+        /* Botão Voltar */
+        .back-box {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 35px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--neon-blue);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            transition: 0.4s;
+        }
+
+        .btn-back:hover {
+            background: var(--neon-blue);
+            color: #0b090a;
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            font-size: 14px;
+            width: 100%;
+        }
+
+        footer p span {
+            color: var(--neon-red);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            body {
+                padding-top: 140px;
+            }
+            .neon-sign {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Ferreira's <span>Bite</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#cardapio">Cardápio</a></li>
+                    <li><a href="ambiente.html" style="color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink);">O Espaço</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="facade-mock">
+            <div class="neon-sign">FERREIRA’S BITE: ONDE O SABOR ENCONTRA O SEU MELHOR MOMENTO.</div>
+            
+            <p style="color: var(--neon-blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; font-weight: bold;">
+                BITE • EAT • REPEAT
+            </p>
+            
+            <p style="max-width: 700px; margin: 0 auto; color: #ffffff; font-weight: bold; font-size: 1.25rem; text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 0, 255, 0.5); line-height: 1.6; text-align: center;">
+                O Ferreira's Bite une a nostalgia dos clássicos Diners americanos à ousadia da estética Cyberpunk. Do neon vibrante ao couro vermelho, cada detalhe foi pensado para uma experiência autêntica e memorável.
+                <br><br>
+                Aqui, a regra é clara: BITE. EAT. REPEAT.
+                <br><br>
+                Elevamos o padrão do hambúrguer artesanal com ingredientes selecionados e um ambiente perfeito para recarregar as energias. Seja para um encontro ou uma pausa, nosso balcão está pronto para você.
+                <br><br>
+                Onde o sabor encontra o seu melhor momento. Good Food, Good Mood.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>⚡ Luzes de Neon</h3>
+                    <p>Iluminação imersiva inspirada na cultura retro-futurista de Tóquio e dos Diners americanos clássicos.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎸 Clássicos e Futuro</h3>
+                    <p>Música ambiente selecionada a dedo para acompanhar o compasso de cada mordida.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📸 Espaço Instagramável</h3>
+                    <p>Cada canto do nosso balcão e sofás vermelhos rende a foto perfeita para o seu feed.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-box">
+            <a href="index.html" class="btn-back">Ver Cardápio Completo</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Ferreira's Bite. Todos os direitos reservados. Feito com <span>&hearts;</span> para o seu paladar.</p>
+    </footer>
+
+</body>
+</html>
